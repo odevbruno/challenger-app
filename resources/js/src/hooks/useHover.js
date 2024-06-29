@@ -9,6 +9,7 @@ export default function useHover() {
 
   return {
     hoveredIndex,
+    setHoveredIndex,
     handleMouse,
   }
 }

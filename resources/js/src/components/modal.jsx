@@ -4,7 +4,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
     if (!isOpen) return null;
     return (
         <div className="fixed w-full h-full inset-0 bg-black bg-opacity-50 flex items-start pt-[10%] justify-center z-50 text-zinc-50">
-            <div className="bg-zinc-800 p-6 rounded shadow-2xl relative w-[80%] lg:w-[500px]">
+            <div className="bg-zinc-800 p-6 rounded shadow-2xl relative w-[98%] lg:w-[600px]">
                 <div
                     onClick={(ev) => {
                         ev.stopPropagation();

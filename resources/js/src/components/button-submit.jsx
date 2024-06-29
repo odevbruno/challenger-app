@@ -6,8 +6,7 @@ export default function ButtonSubmit({ children, ...props }) {
             className="
       bg-black 
         hover:bg-red-500
-          h-[40px]
-          lg:h-[50px]
+          h-[50px]
           w-full
           rounded-lg
 "

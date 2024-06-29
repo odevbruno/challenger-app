@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Exibe a barra de overflow para Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #414244 #3c3c3c00;
+}

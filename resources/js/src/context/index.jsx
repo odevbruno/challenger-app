@@ -4,31 +4,40 @@ const MainContext = createContext({});
 
 function MainProvider({ children }) {
     const [modal, setModal] = useState(false);
+    const setoresLocal = localStorage.getItem("setores");
+    const cargosLocais = localStorage.getItem("cargos");
+    const funcionariosLocais = localStorage.getItem("funcionarios");
 
-    const [setores, setSetores] = useState([
-        { id: 1, name: "TI", description: "Tecnologia da Informação" },
-        { id: 2, name: "RH", description: "Recursos Humanos" },
-        { id: 3, name: "UI/UX", description: "Criativo" },
-    ]);
+    const [setores, setSetores] = useState(() =>
+        setoresLocal ? JSON.parse(setoresLocal) : []
+    );
 
-    const [cargos, setCargos] = useState([
-        { id: 1, name: "Desenvolvedor Frontend", setorId: 1 },
-        { id: 2, name: "Desenvolvedor Backend", setorId: 1 },
-        { id: 3, name: "Designer gráfico", setorId: 3 },
-        { id: 4, name: "Gerente RH", setorId: 2 },
-        { id: 5, name: "Assistente RH", setorId: 2 },
-        { id: 6, name: "PO - Project Owner", setorId: 2 },
-    ]);
+    const [cargos, setCargos] = useState(() =>
+        cargosLocais ? JSON.parse(cargosLocais) : []
+    );
 
-    const [funcionarios, setFuncionarios] = useState([
-        { id: 1, name: "Bruno", cargoId: 1 },
-        { id: 1, name: "Hudson", cargoId: 6 },
-        { id: 1, name: "Felipe", cargoId: 2 },
-        { id: 1, name: "Ian", cargoId: 3 },
-        { id: 2, name: "Maria", cargoId: 4 },
-    ]);
+    const [funcionarios, setFuncionarios] = useState(() =>
+        funcionariosLocais ? JSON.parse(funcionariosLocais) : []
+    );
 
-    const props = { setores, cargos, funcionarios, modal, setModal };
+    const cleanSetName = (name) => {
+        return name
+            ?.replace(/[^\w\s]/gi, "")
+            ?.replace(/\d/g, "")
+            ?.replace(/\s+/g, "");
+    };
+
+    const props = {
+        setores,
+        setSetores,
+        cargos,
+        setCargos,
+        funcionarios,
+        setFuncionarios,
+        modal,
+        setModal,
+        cleanSetName,
+    };
 
     return (
         <MainContext.Provider value={props}>{children}</MainContext.Provider>
