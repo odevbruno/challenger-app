@@ -115,7 +115,7 @@ export default function Cargos() {
         const [reorderedItem] = items.splice(result.source.index, 1);
         items.splice(result.destination.index, 0, reorderedItem);
         set(items);
-        localStorage.setItem(refStorage, JSON.stringfy(items));
+        localStorage.setItem(refStorage, JSON.stringify(items));
     };
 
     return (
